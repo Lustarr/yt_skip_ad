@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Auto Skip Ads",
+  "version": "1.0.0",
+  "description": "自動點擊 YouTube 的略過廣告按鈕",
+  "permissions": ["scripting", "activeTab", "debugger"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "https://m.youtube.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
